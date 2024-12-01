@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const Users = () => {
    const [data,setData] = useState([])
@@ -6,13 +6,20 @@ const Users = () => {
    async function fetchingData()
    {
     try{
-          const res  = await fetch("")
-    }
+          const res  = await fetch("https://reqres.in/api/users/");
+          const data = await es.json();
+         
+          setData(data?.data  || [])
+    }  
     catch(error)
     {
 
     }
    }
+
+   useEffect(()=>{
+    fetchingData
+   })
   return (
     <div>Users</div>
   )
